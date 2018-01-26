@@ -1,37 +1,41 @@
-## Welcome to GitHub Pages
+## Welcome to RoboLearnr
 
-You can use the [editor on GitHub](https://github.com/RoboLearnr/robolearnr.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+RoboLearnr is simple to use tool to enable beginners to start programming.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Is is a all-in-one tool written in [Go](https://golang.org/) to render maps and allow a car to move using some basic
+instructions through an api. To simplify getting strarted some sdk's are provided in different languages.
 
-### Markdown
+### Installation
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Download the [latest release](https://github.com/RoboLearnr/robolearnr/releases).
 
-```markdown
-Syntax highlighted code block
+### Example
 
-# Header 1
-## Header 2
-### Header 3
+Start the server and open http://127.0.0.1:9000
 
-- Bulleted
-- List
+```bash
+./robolearnr[.exe] https://raw.githubusercontent.com/RoboLearnr/robolearnr/master/maps/robolearn.txt
 
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+Write your program.
 
-### Jekyll Themes
+```python
+import robolearnr
+import time
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/RoboLearnr/robolearnr.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+rl = robolearnr.Robolearn()
+rl.reset()
 
-### Support or Contact
+while not rl.on_goal():
+    while not rl.before_obstacle():
+        rl.forward()
+        time.sleep(0.05)
+    rl.rotate()
+```
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+Run your program.
+
+```
+pip install robolearnr-python
+python program.py
